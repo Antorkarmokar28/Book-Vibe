@@ -24,6 +24,7 @@ const Footer = () => {
 
           <p>
             Books that feel like quiet conversations—inviting reflection,
+            <br />
             emotion, curiosity, and comfort with every thoughtfully written
             page.
           </p>
