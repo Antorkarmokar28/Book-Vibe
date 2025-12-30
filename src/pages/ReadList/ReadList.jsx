@@ -7,6 +7,7 @@ import "react-tabs/style/react-tabs.css";
 import ReadBook from "../../components/ReadBook/ReadBook";
 import WishListBook from "../../components/WishListBook/WishListBook";
 import { getStoredWishListData } from "../../utilities/addBookWish";
+import { ArrowDown } from "lucide-react";
 const ReadList = () => {
   const readListBookData = useLoaderData();
   const [readList, setBookList] = useState([]);
@@ -35,6 +36,27 @@ const ReadList = () => {
     <div className="container mx-auto px-4 mt-20 mb-20">
       <div className="bg-gray-200 p-6 rounded-2xl text-center mb-20">
         <h1 className="text-4xl font-bold">Books</h1>
+        {/* short button with dropdown */}
+        <div className="dropdown dropdown-bottom dropdown-center">
+          <div
+            tabIndex={0}
+            role="button"
+            className="btn m-1 bg-green-600 text-gray-200 duration-300 hover:bg-green-500"
+          >
+            Short By <ArrowDown />
+          </div>
+          <ul
+            tabIndex="-1"
+            className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm"
+          >
+            <li>
+              <a>Short by:Pages</a>
+            </li>
+            <li>
+              <a>Short by:Review</a>
+            </li>
+          </ul>
+        </div>
       </div>
       <Tabs>
         <TabList>
