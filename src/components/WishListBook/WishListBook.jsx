@@ -1,7 +1,7 @@
 import { BookOpenText, MapPin, UserPen } from "lucide-react";
 import { Link } from "react-router";
 
-const ReadBook = ({ singleBook }) => {
+const WishListBook = ({ singleBook }) => {
   const {
     bookId,
     bookName,
@@ -14,7 +14,6 @@ const ReadBook = ({ singleBook }) => {
     yearOfPublishing,
     rating,
   } = singleBook;
-
   return (
     <div className="md:flex gap-4 items-center border border-slate-200 rounded-2xl p-4 mb-4">
       <figure className="p-8 bg-gray-200 rounded-2xl">
@@ -61,4 +60,4 @@ const ReadBook = ({ singleBook }) => {
   );
 };
 
-export default ReadBook;
+export default WishListBook;

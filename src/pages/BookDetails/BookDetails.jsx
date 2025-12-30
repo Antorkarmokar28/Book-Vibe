@@ -1,5 +1,6 @@
 import { useLoaderData, useParams } from "react-router";
 import { addStoredData } from "../../utilities/utilities";
+import { addStoredWishListData } from "../../utilities/addBookWish";
 
 const BookDetails = () => {
   const { id } = useParams();
@@ -22,6 +23,10 @@ const BookDetails = () => {
 
   const handleSubmit = (id) => {
     addStoredData(id);
+  };
+
+  const handleWishList = (id) => {
+    addStoredWishListData(id);
   };
 
   return (
@@ -69,7 +74,10 @@ const BookDetails = () => {
               >
                 Read
               </button>
-              <button className="btn bg-green-500 text-gray-200">
+              <button
+                onClick={() => handleWishList(id)}
+                className="btn bg-green-500 text-gray-200"
+              >
                 Wishlist
               </button>
             </div>
