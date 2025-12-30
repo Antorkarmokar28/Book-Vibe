@@ -12,7 +12,7 @@ const ReadList = () => {
   const readListBookData = useLoaderData();
   const [readList, setBookList] = useState([]);
   const [wishList, setWishList] = useState([]);
-
+  const [sorted, setSorted] = useState("");
   useEffect(() => {
     //get readlist data from to local sotrage
     const getReadListData = getStoredData();
@@ -32,6 +32,31 @@ const ReadList = () => {
     setWishList(myWishListBook);
   }, [readListBookData]);
 
+  const handleShorted = (type) => {
+    setSorted(type);
+    if (type === "pages") {
+      const sortedByPages = [...readList].sort(
+        (a, b) => a.totalPages - b.totalPages
+      );
+      setBookList(sortedByPages);
+    }
+    if (type === "ratings") {
+      const sortedByRatings = [...readList].sort((a, b) => a.rating - b.rating);
+      setBookList(sortedByRatings);
+    }
+    // sorted wish list book data
+    if (type === "pages") {
+      const sortedByPages = [...wishList].sort(
+        (a, b) => a.totalPages - b.totalPages
+      );
+      setWishList(sortedByPages);
+    }
+    if (type === "ratings") {
+      const sortedByRatings = [...wishList].sort((a, b) => a.rating - b.rating);
+      setWishList(sortedByRatings);
+    }
+  };
+
   return (
     <div className="container mx-auto px-4 mt-20 mb-20">
       <div className="bg-gray-200 p-6 rounded-2xl text-center mb-20">
@@ -50,10 +75,10 @@ const ReadList = () => {
             className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm"
           >
             <li>
-              <a>Short by:Pages</a>
+              <a onClick={() => handleShorted("pages")}>Short by: {sorted}</a>
             </li>
             <li>
-              <a>Short by:Review</a>
+              <a onClick={() => handleShorted("ratings")}>Short by: {sorted}</a>
             </li>
           </ul>
         </div>
